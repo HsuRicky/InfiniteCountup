@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            * {
+                outline: none;
+            }
+
+            html {
+                background: #F7F3F5;
+            }
+
+            body * {
+                box-sizing: border-box;
+            }
+
+            a,
+            abbr,
+            acronym,
+            address,
+            applet,
+            article,
+            aside,
+            audio,
+            b,
+            big,
+            blockquote,
+            body,
+            canvas,
+            caption,
+            center,
+            cite,
+            code,
+            dd,
+            del,
+            details,
+            dfn,
+            div,
+            dl,
+            dt,
+            em,
+            embed,
+            fieldset,
+            figcaption,
+            figure,
+            footer,
+            form,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            header,
+            hgroup,
+            html,
+            i,
+            iframe,
+            img,
+            ins,
+            kbd,
+            label,
+            legend,
+            li,
+            mark,
+            menu,
+            nav,
+            object,
+            ol,
+            output,
+            p,
+            pre,
+            q,
+            ruby,
+            s,
+            samp,
+            section,
+            small,
+            span,
+            strike,
+            strong,
+            sub,
+            summary,
+            sup,
+            table,
+            tbody,
+            td,
+            tfoot,
+            th,
+            thead,
+            time,
+            tr,
+            tt,
+            u,
+            ul,
+            var,
+            video {
+                border: 0;
+                font: inherit;
+                font-size: 100%;
+                margin: 0;
+                padding: 0;
+                vertical-align: baseline;
+            }
+
+            .jackpot-countup {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .main-home .jackpot-countup .content {
+                width: 900px;
+            }
+
+            .jackpot-countup .content {
+                align-items: center;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                min-width: 700px;
+                position: relative;
+            }
+
+            .jackpot-countup .content .infinite-countup {
+                background-color: rgba(33, 33, 33, .7);
+                border: 5px solid #f1c137;
+                border-radius: 12.1px;
+                box-sizing: border-box;
+                display: flex;
+                filter: drop-shadow(0 0 15px rgba(241, 193, 55, .8));
+                font-family: DIN;
+                font-size: 40px;
+                font-weight: 500;
+                justify-content: center;
+                padding: 20px 50px 20px 20px;
+                width: 100%;
+            }
+
+            .main-home .jackpot-countup .content .infinite-countup {
+                background: url(/static/wjbet/jp-bg.png) bottom/100% auto no-repeat;
+                border: 0 solid #000;
+                filter: drop-shadow(0 0 0 #000);
+                padding: 130px 0 40px 170px;
+                width: 100%;
+            }
+
+            .jackpot-countup .content .infinite-countup>div.digit {
+                background-color: #313131;
+                border: 2px solid #000;
+                border-radius: 8px;
+                margin: 0 3px;
+                padding: 12px;
+            }
+
+            .jackpot-countup .content .infinite-countup>div.operator {
+                align-items: flex-end;
+                display: flex;
+                margin: 0 1px;
+            }
+
+            .jackpot-countup .content .infinite-countup>div {
+                color: #ffe500;
+            }
+
+            @media screen and (max-width:1024px) {
+                .jackpot-countup .content .infinite-countup {
+                    font-size: calc(100vw * 0.038);
+                }
+            }
+
+            @media screen and (max-width:855px) {
+                .main-home .jackpot-countup .content .infinite-countup {
+                    padding: 120px 0 40px 150px;
+                }
+            }
+
+            @media screen and (max-width:777px) {
+                .main-home .jackpot-countup .content {
+                    width: 95vw;
+                }
+
+                .jackpot-countup .content {
+                    min-width: 95vw;
+                }
+
+                .jackpot-countup .content .infinite-countup {
+                    font-size: calc(100vw * 0.030);
+                }
+
+                .main-home .jackpot-countup .content .infinite-countup {
+                    padding: 110px 0 30px 150px;
+                }
+
+                .jackpot-countup .content .infinite-countup>div.digit {
+                    margin: 0 2px;
+                    padding: calc(100vw * 0.041 - 17px);
+                }
+            }
+
+            @media screen and (max-width:660px) {
+                .main-home .jackpot-countup .content .infinite-countup {
+                    padding: 90px 0 30px 140px;
+                }
+
+                .jackpot-countup .content .infinite-countup {
+                    font-size: calc(100vw * 0.029);
+                }
+
+                .jackpot-countup .content .infinite-countup>div.digit {
+                    margin: 0 2px;
+                    padding: calc(100vw * 0.041 - 16px);
+                }
+            }
+
+            @media screen and (max-width:580px) {
+                .main-home .jackpot-countup .content .infinite-countup {
+                    padding: 80px 0 25px 110px;
+                }
+
+                .jackpot-countup .content .infinite-countup {
+                    font-size: calc(100vw * 0.032);
+                }
+
+                .jackpot-countup .content .infinite-countup>div.digit {
+                    margin: 0 2px;
+                    padding: calc(100vw * 0.041 - 14px);
+                }
+            }
+
+            @media screen and (max-width:530px) {
+                .main-home .jackpot-countup .content .infinite-countup {
+                    padding: 70px 0 22px 110px;
+                }
+
+                .jackpot-countup .content .infinite-countup {
+                    font-size: calc(100vw * 0.032);
+                }
+
+                .jackpot-countup .content .infinite-countup>div.digit {
+                    margin: 0 2px;
+                    padding: calc(100vw * 0.041 - 13px);
+                }
+            }
+
+            @media screen and (max-width:481px) {
+                .main-home .jackpot-countup .content .infinite-countup {
+                    padding: 60px 0 20px 110px;
+                }
+
+                .jackpot-countup .content .infinite-countup {
+                    font-size: calc(100vw * 0.037);
+                }
+
+                .jackpot-countup .content .infinite-countup>div.digit {
+                    margin: 0 2px;
+                    padding: calc(100vw * 0.041 - 12.5px);
+                }
+            }
+
+            @media screen and (max-width:435px) {
+                .main-home .jackpot-countup .content .infinite-countup {
+                    padding: 50px 0 calc(100vw*0.040) calc(100vw * 0.225);
+                }
+
+                .jackpot-countup .content .infinite-countup {
+                    font-size: calc(100vw * 0.0435);
+                }
+
+                .jackpot-countup .content .infinite-countup>div.digit {
+                    margin: 0 1.5px;
+                    padding: calc(100vw * 0.041 - 12px);
+                }
+            }
+
+            @media screen and (max-width:400px) {
+                .main-home .jackpot-countup .content .infinite-countup {
+                    padding: 50px 0 calc(100vw*0.044) calc(100vw * 0.225);
+                }
+
+                .jackpot-countup .content .infinite-countup {
+                    font-size: calc(100vw * 0.0435);
+                }
+
+                .jackpot-countup .content .infinite-countup>div.digit {
+                    margin: 0 1.5px;
+                    padding: calc(100vw * 0.041 - 12px);
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="main-home">
+            <div class="jackpot-countup">
+                <div class="content">
+                    <div class="infinite-countup" style="display: flex;">
+                        <div class="digit" id="n0">3</div>
+                        <div class="digit" id="n1">0</div>
+                        <div class="operator" id="n2">,</div>
+                        <div class="digit" id="n3">5</div>
+                        <div class="digit" id="n4">2</div>
+                        <div class="digit" id="n5">2</div>
+                        <div class="operator" id="n6">,</div>
+                        <div class="digit" id="n7">0</div>
+                        <div class="digit" id="n8">8</div>
+                        <div class="digit" id="n9">9</div>
+                        <div class="operator" id="n10">.</div>
+                        <div class="digit" id="n11">2</div>
+                        <div class="digit" id="n12">6</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            let animateValue = function (obj, start, end, duration) {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+
+                    obj.innerHTML = Math.floor(progress * (end - start) + start) % 10;
+
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+
+            let number2Arr = function (num) {
+                num += "";
+                if (!num.includes(".")) num += ".";
+                digit = num
+                    .replace(/(\d)(?=(\d{3})+\.)/g, function ($0, $1) {
+                        return $1 + ",";
+                    })
+                    .replace(/\.$/, "");
+
+                var num_arr = [];
+                for (var i = 0; i < 13; i++) {
+                    if (i >= digit.length) {
+                        num_arr.push(0);
+                    } else {
+                        num_arr.push(digit.charAt(i));
+                    }
+
+                }
+
+                return num_arr;
+            }
+
+            let setNum = function () {
+                let oldnum = num;
+
+                let randomNumber = (Math.floor(Math.random() * 250) + Math.random()).toFixed(2);
+
+                num += parseFloat(randomNumber);
+
+                let narray_old = number2Arr(oldnum);
+                let narray = number2Arr(num);
+
+                console.log(narray, randomNumber);
+
+                for (var i = 0; i < narray.length; i++) {
+                    if (i == 10 & narray[i] != ".") {
+                        narray[i] = "."
+                    }
+
+                    if (narray[i] != "," & narray[i] != "." & i >= 7 & i <= 12) {
+                        run = true;
+                        if (i == 7 & narray[i] == narray_old[i]) {
+                            run = false
+                        }
+
+                        if (run) {
+                            obj = document.getElementById("n" + i);
+
+                            start = narray[i] % 10;
+                            end = narray[i] % 10 + 10 * (i + 1);
+                            duration = 200 * i * 1.3;
+
+                            animateValue(obj, start, end, duration);
+                        }
+                    } else if (i < 7) {
+                        document.getElementById("n" + i).innerHTML = narray[i];
+                    }
+
+                    if (i == 12) {
+                        console.log("setTimeout")
+                        setTimeout(() => {
+                            setNum()
+                        }, duration + 3000);
+                    }
+                }
+
+
+            };
+
+            var num = 30522090.26;
+
+            document.addEventListener("DOMContentLoaded", () => {
+                setNum();
+            });
+        </script>
+    </body>
+
+</html>
