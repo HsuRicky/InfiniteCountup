@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <style>
+            @font-face {
+                font-family: advanced dot digital-7;
+                font-style: normal;
+                font-weight: 400;
+                src: local('Advanced Dot Digital-7'), url(https://fonts.cdnfonts.com/s/26574/advanced_dot_digital-7.woff) format('woff')
+            }
+
+            :root {
+                --jackpot-color: #151720;
+                --jackpot-text: #ffffff;
+                --jackpot-theme: url(static/gif/jackpot.gif);
+                --background-page: #151720;
+            }
+
+            .jackpot-gif {
+                background-image: var(--jackpot-theme);
+                background-size: 100%;
+                background-repeat: no-repeat;
+                background-position: center;
+                margin-top: 30px;
+                width: 99vw;
+                height: 20.85117493vw;
+            }
+
+            .jackpot-gif .jackpot-amount {
+                font-size: 30px;
+                font-weight: 600;
+                color: var(--jackpot-text);
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                letter-spacing: 3px;
+                font-family: 'Advanced Dot Digital-7', sans-serif;
+                padding: 15px;
+            }
+
+            @media screen and (max-width:900px) {
+                .jackpot-gif .jackpot-amount {
+                    font-size: 24px;
+                    font-weight: 600;
+                    padding: 14px;
+                }
+            }
+
+            @media screen and (max-width:700px) {
+                .jackpot-gif .jackpot-amount {
+                    font-size: 19px;
+                    font-weight: 600;
+                    padding: 12px;
+                }
+            }
+
+            @media screen and (max-width:600px) {
+                .jackpot-gif .jackpot-amount {
+                    font-size: 14px;
+                    font-weight: 600;
+                    padding: 10px;
+                }
+            }
+
+            @media screen and (max-width:500px) {
+                .jackpot-gif .jackpot-amount {
+                    font-size: 11px;
+                    font-weight: 600;
+                    padding: 8.8px;
+                }
+            }
+
+            @media screen and (max-width:400px) {
+                .jackpot-gif .jackpot-amount {
+                    font-size: 8.5px;
+                    font-weight: 600;
+                    padding: 6px;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="jackpot-gif">
+            <div class="jackpot-amount">
+                PHP <span class="ml-3" id="amount-jackpot">4,692,978.43</span>
+            </div>
+        </div>
+
+        <script>
+            function jackpotHome() {
+                var amount = document.getElementById('amount-jackpot');
+                var start = new Date("May 30, 2023 00:00:00");
+                var current;
+                update();
+
+                setInterval(update, 100);
+
+                function update() {
+                    var current = ((new Date() - start) / (24 * 3600 * 500));
+                    var num2 = Math.floor((Math.random() * 2) + 1);
+                    current = current * 10000 + num2;
+                    if (amount) amount.innerText = formatMoney(current);
+                }
+
+                function formatMoney(amount, decimalCount = 2, decimal = ".", thousands = ",") {
+                    try {
+                        decimalCount = Math.abs(decimalCount);
+                        decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
+
+                        const negativeSign = amount < 0 ? "-" : "";
+
+                        let i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
+                        let j = (i.length > 3) ? i.length % 3 : 0;
+
+                        return negativeSign +
+                            (j ? i.substr(0, j) + thousands : '') +
+                            i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) +
+                            (decimalCount ? decimal + Math.abs(amount - i).toFixed(decimalCount).slice(2) : "");
+                    } catch (e) {
+                        console.log(e)
+                    }
+                };
+            }
+
+            document.addEventListener("DOMContentLoaded", () => {
+                jackpotHome();
+            });
+        </script>
+    </body>
+
+</html>
